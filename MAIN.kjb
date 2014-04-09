@@ -18,12 +18,12 @@
         </parameter>
         <parameter>
             <name>sprint_id</name>
-            <default_value>93</default_value>
+            <default_value>94</default_value>
             <description>JIRA sprint ID</description>
         </parameter>
         <parameter>
             <name>sprint_team</name>
-            <default_value>Pervach</default_value>
+            <default_value>Absinthe</default_value>
             <description>JIRA sprint team name</description>
         </parameter>
         <parameter>

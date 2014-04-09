@@ -305,7 +305,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <script><![CDATA[.*((PDI|SP)-[0-9]+).*]]></script>    <matcher>title</matcher>
+    <script><![CDATA[.*((PDI|SP|BISERVER|PRD|PDB|MOBILE)-[0-9]+).*]]></script>    <matcher>title</matcher>
     <resultfieldname/>
     <usevar>N</usevar>
     <allowcapturegroups>Y</allowcapturegroups>
