@@ -1,0 +1,48 @@
+<html><head>
+<script>
+window.onload = function(){
+var cells = document.getElementById("report").getElementsByTagName("td");
+for (var i = 0; i < cells.length; i++) {
+    if (cells[i].innerHTML.indexOf("code-complete") >= 0) {
+        cells[i].style.backgroundColor = "orange";
+    } else if (cells[i].innerHTML.indexOf("Unassigned") >= 0 || 
+               cells[i].innerHTML.indexOf("Triage") >= 0) {
+        cells[i].style.backgroundColor = "red";
+    }
+}
+}
+</script>
+</head><body><table id="report" cellspacing="2" border="1" cellpadding="5" width="600">
+<tr><th>SP Case</th><th>SP Case assignee</th><th>Original bug</th><th>Fixed original bug</th></tr><tr><td><a href="http://jira.pentaho.com/browse/SP-897">SP-897</a></td><td>Viktoryia Shalkova</td><td><a href="http://jira.pentaho.com/browse/PDI-10878">PDI-10878</a></td><td>Kanstantsin Karneliuk</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-897">SP-897</a></td><td>Viktoryia Shalkova</td><td><a href="http://jira.pentaho.com/browse/PDI-10878">PDI-10878</a></td><td>Kanstantsin Karneliuk</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-896">SP-896</a></td><td>Viktoryia Shalkova</td><td><a href="http://jira.pentaho.com/browse/PDI-10878">PDI-10878</a></td><td>Kanstantsin Karneliuk</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-896">SP-896</a></td><td>Viktoryia Shalkova</td><td><a href="http://jira.pentaho.com/browse/PDI-10878">PDI-10878</a></td><td>Kanstantsin Karneliuk</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-788">SP-788</a></td><td>Viktoryia Shalkova</td><td><a href="http://jira.pentaho.com/browse/PDI-10270">PDI-10270</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-383">SP-383</a></td><td>Viktoryia Shalkova</td><td><a href="http://jira.pentaho.com/browse/PDI-10270">PDI-10270</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-894">SP-894</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10251">PDI-10251</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-794">SP-794</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10262">PDI-10262</a></td><td>Pavel Sakun</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-794">SP-794</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10262">PDI-10262</a></td><td>Pavel Sakun</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-794">SP-794</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10262">PDI-10262</a></td><td>Pavel Sakun</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-499">SP-499</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10262">PDI-10262</a></td><td>Pavel Sakun</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-499">SP-499</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10262">PDI-10262</a></td><td>Pavel Sakun</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-499">SP-499</a></td><td>Pavel Sakun</td><td><a href="http://jira.pentaho.com/browse/PDI-10262">PDI-10262</a></td><td>Pavel Sakun</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-841">SP-841</a></td><td>Ihar Chekan</td><td><a href="http://jira.pentaho.com/browse/PDI-10957">PDI-10957</a></td><td>Mike Tev</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1180">SP-1180</a></td><td>Dzmitry Stsiapanau</td><td><a href="http://jira.pentaho.com/browse/PDI-9598">PDI-9598</a></td><td>Dzmitry Stsiapanau</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1136">SP-1136</a></td><td>Dzmitry Stsiapanau</td><td><a href="http://jira.pentaho.com/browse/PDI-11547">PDI-11547</a></td><td>Dzmitry Stsiapanau</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-564">SP-564</a></td><td>Dzmitry Stsiapanau</td><td><a href="http://jira.pentaho.com/browse/PDI-9411">PDI-9411</a></td><td>Dzmitry Stsiapanau</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-249">SP-249</a></td><td>Dzmitry Stsiapanau</td><td><a href="http://jira.pentaho.com/browse/PDI-9598">PDI-9598</a></td><td>Dzmitry Stsiapanau</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-899">SP-899</a></td><td>Dzmitry Stsiapanau</td><td><a href="http://jira.pentaho.com/browse/PDI-8979">PDI-8979</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1117">SP-1117</a></td><td>Dzmitry Prakapenka</td><td><a href="http://jira.pentaho.com/browse/PDI-11420">PDI-11420</a></td><td>Dzmitry Prakapenka</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-797">SP-797</a></td><td>Dzmitry Prakapenka</td><td><a href="http://jira.pentaho.com/browse/PDI-4325">PDI-4325</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-397">SP-397</a></td><td>Dzmitry Prakapenka</td><td><a href="http://jira.pentaho.com/browse/PDI-4325">PDI-4325</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1025">SP-1025</a></td><td>Dzmitry Bahdanovich</td><td><a href="http://jira.pentaho.com/browse/PDI-8986">PDI-8986</a></td><td>Dzmitry Bahdanovich</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-232">SP-232</a></td><td>Dzmitry Bahdanovich</td><td><a href="http://jira.pentaho.com/browse/PDI-8986">PDI-8986</a></td><td>Dzmitry Bahdanovich</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-787">SP-787</a></td><td>Dzmitry Bahdanovich</td><td><a href="http://jira.pentaho.com/browse/PDI-7070">PDI-7070</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-517">SP-517</a></td><td>Dzmitry Bahdanovich</td><td><a href="http://jira.pentaho.com/browse/PDI-10503">PDI-10503</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-204">SP-204</a></td><td>Dzmitry Bahdanovich</td><td><a href="http://jira.pentaho.com/browse/PDI-9844">PDI-9844</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-485">SP-485</a></td><td>Antonina Doudkina</td><td><a href="http://jira.pentaho.com/browse/PDI-8979">PDI-8979</a></td><td>not 'code-complete'</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1054">SP-1054</a></td><td>Alena Khamitsevich</td><td><a href="http://jira.pentaho.com/browse/PDI-11319">PDI-11319</a></td><td>Dzmitry Bahdanovich</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1019">SP-1019</a></td><td>Alena Khamitsevich</td><td><a href="http://jira.pentaho.com/browse/PDI-4910">PDI-4910</a></td><td>Dzmitry Bahdanovich</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1019">SP-1019</a></td><td>Alena Khamitsevich</td><td><a href="http://jira.pentaho.com/browse/PDI-4910">PDI-4910</a></td><td>Dzmitry Bahdanovich</td>
+<tr><td><a href="http://jira.pentaho.com/browse/SP-1021">SP-1021</a></td><td>Alena Khamitsevich</td><td><a href="http://jira.pentaho.com/browse/PDI-7507">PDI-7507</a></td><td>Dzmitry Stsiapanau</td>
+</table></html>
