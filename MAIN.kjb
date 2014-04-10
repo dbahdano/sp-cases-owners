@@ -18,12 +18,12 @@
         </parameter>
         <parameter>
             <name>sprint_id</name>
-            <default_value>94</default_value>
-            <description>JIRA sprint ID</description>
+            <default_value>93</default_value>
+            <description>JIRA sprint ID. If empty then take data from backlog</description>
         </parameter>
         <parameter>
             <name>sprint_team</name>
-            <default_value>Absinthe</default_value>
+            <default_value>Pervach</default_value>
             <description>JIRA sprint team name</description>
         </parameter>
         <parameter>
@@ -191,7 +191,7 @@
       <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;report.html</filename>
       <createParentFolder>Y</createParentFolder>
       <appendFile>N</appendFile>
-      <content>&#x3c;html&#x3e;&#x3c;head&#x3e;&#xd;&#xa;&#x3c;script&#x3e;&#xd;&#xa;window.onload &#x3d; function&#x28;&#x29;&#x7b;&#xd;&#xa;var cells &#x3d; document.getElementById&#x28;&#x22;report&#x22;&#x29;.getElementsByTagName&#x28;&#x22;td&#x22;&#x29;&#x3b;&#xd;&#xa;for &#x28;var i &#x3d; 0&#x3b; i &#x3c; cells.length&#x3b; i&#x2b;&#x2b;&#x29; &#x7b;&#xd;&#xa;    if &#x28;cells&#x5b;i&#x5d;.innerHTML.indexOf&#x28;&#x22;code-complete&#x22;&#x29; &#x3e;&#x3d; 0&#x29; &#x7b;&#xd;&#xa;        cells&#x5b;i&#x5d;.style.backgroundColor &#x3d; &#x22;orange&#x22;&#x3b;&#xd;&#xa;    &#x7d; else if &#x28;cells&#x5b;i&#x5d;.innerHTML.indexOf&#x28;&#x22;Unassigned&#x22;&#x29; &#x3e;&#x3d; 0 &#x7c;&#x7c; &#xd;&#xa;               cells&#x5b;i&#x5d;.innerHTML.indexOf&#x28;&#x22;Triage&#x22;&#x29; &#x3e;&#x3d; 0&#x29; &#x7b;&#xd;&#xa;        cells&#x5b;i&#x5d;.style.backgroundColor &#x3d; &#x22;red&#x22;&#x3b;&#xd;&#xa;    &#x7d;&#xd;&#xa;&#x7d;&#xd;&#xa;&#x7d;&#xd;&#xa;&#x3c;&#x2f;script&#x3e;&#xd;&#xa;&#x3c;&#x2f;head&#x3e;&#x3c;body&#x3e;&#x3c;table id&#x3d;&#x22;report&#x22; cellspacing&#x3d;&#x22;2&#x22; border&#x3d;&#x22;1&#x22; cellpadding&#x3d;&#x22;5&#x22; width&#x3d;&#x22;600&#x22;&#x3e;&#xd;&#xa;&#x3c;tr&#x3e;&#x3c;th&#x3e;SP Case&#x3c;&#x2f;th&#x3e;&#x3c;th&#x3e;SP Case assignee&#x3c;&#x2f;th&#x3e;&#x3c;th&#x3e;Original bug&#x3c;&#x2f;th&#x3e;&#x3c;th&#x3e;Fixed original bug&#x3c;&#x2f;th&#x3e;&#x3c;&#x2f;tr&#x3e;</content>
+      <content>&#x3c;html&#x3e;&#x3c;head&#x3e;&#xd;&#xa;&#x3c;script&#x3e;&#xd;&#xa;window.onload &#x3d; function&#x28;&#x29;&#x7b;&#xd;&#xa;var cells &#x3d; document.getElementById&#x28;&#x22;report&#x22;&#x29;.getElementsByTagName&#x28;&#x22;td&#x22;&#x29;&#x3b;&#xd;&#xa;for &#x28;var i &#x3d; 0&#x3b; i &#x3c; cells.length&#x3b; i&#x2b;&#x2b;&#x29; &#x7b;&#xd;&#xa;    if &#x28;cells&#x5b;i&#x5d;.innerHTML.indexOf&#x28;&#x22;code-complete&#x22;&#x29; &#x3e;&#x3d; 0&#x29; &#x7b;&#xd;&#xa;        cells&#x5b;i&#x5d;.style.backgroundColor &#x3d; &#x22;orange&#x22;&#x3b;&#xd;&#xa;    &#x7d; else if &#x28;cells&#x5b;i&#x5d;.innerHTML.indexOf&#x28;&#x22;Unassigned&#x22;&#x29; &#x3e;&#x3d; 0 &#x7c;&#x7c; &#xd;&#xa;               cells&#x5b;i&#x5d;.innerHTML.indexOf&#x28;&#x22;Triage&#x22;&#x29; &#x3e;&#x3d; 0&#x29; &#x7b;&#xd;&#xa;        cells&#x5b;i&#x5d;.style.backgroundColor &#x3d; &#x22;red&#x22;&#x3b;&#xd;&#xa;    &#x7d;&#xd;&#xa;&#x7d;&#xd;&#xa;&#x7d;&#xd;&#xa;&#x3c;&#x2f;script&#x3e;&#xd;&#xa;&#x3c;&#x2f;head&#x3e;&#x3c;body&#x3e;&#x3c;table id&#x3d;&#x22;report&#x22; cellspacing&#x3d;&#x22;2&#x22; border&#x3d;&#x22;1&#x22; cellpadding&#x3d;&#x22;5&#x22; width&#x3d;&#x22;600&#x22;&#x3e;&#xd;&#xa;&#x3c;tr&#x3e;&#x3c;th&#x3e;SP Case&#x3c;&#x2f;th&#x3e;&#x3c;th&#x3e;SP Case assignee&#x3c;&#x2f;th&#x3e;&#x3c;th&#x3e;Original bug&#x3c;&#x2f;th&#x3e;&#x3c;th&#x3e;Who set &#x27;code-complete&#x27;&#x3c;&#x2f;th&#x3e;&#x3c;&#x2f;tr&#x3e;</content>
       <encoding/>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -336,11 +336,11 @@
   </hops>
   <notepads>
     <notepad>
-      <note>Parameters&#x3a;&#xd;&#xa;&#xd;&#xa;user - pentaho JIRA user name, e.g dzmitry_bahdanovich&#xd;&#xa;&#xd;&#xa;password - JIRA password&#xd;&#xa;&#xd;&#xa;sprint_id - ID &#x28;not name&#x29; of the sprint you have access to. &#xd;&#xa;To find it, open any SP case, hover Active Sprint link and look into it&#x27;s URL&#xd;&#xa;&#xd;&#xa;sprint_team - JIRA spring team name &#x28;e.g. Pervach&#x29; </note>
+      <note>Parameters&#x3a;&#xd;&#xa;&#xd;&#xa;user - pentaho JIRA user name, e.g dzmitry_bahdanovich&#xd;&#xa;&#xd;&#xa;password - JIRA password&#xd;&#xa;&#xd;&#xa;sprint_id - ID &#x28;not a name&#x29; of the sprint you have access to. &#xd;&#xa;To find it, open any SP case, hover an Active Sprint link and look into it&#x27;s URL&#xd;&#xa;If sprint_id is empty then the job will take data from a backlog.&#xd;&#xa;&#xd;&#xa;sprint_team - JIRA spring team name &#x28;e.g. Pervach&#x29; </note>
       <xloc>256</xloc>
       <yloc>261</yloc>
-      <width>439</width>
-      <heigth>164</heigth>
+      <width>457</width>
+      <heigth>179</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>

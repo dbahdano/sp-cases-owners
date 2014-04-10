@@ -75,11 +75,7 @@
   <notepads>
   </notepads>
   <order>
-  <hop> <from>Starter</from><to>Get Unassigned&#x2f;Triage issues</to><enabled>N</enabled> </hop>
-  <hop> <from>Get Unassigned&#x2f;Triage issues</from><to>Key,Summary,Assignee</to><enabled>N</enabled> </hop>
-  <hop> <from>Key,Summary,Assignee</from><to>Text file output</to><enabled>N</enabled> </hop>
-  <hop> <from>Starter</from><to>Get All Sprint issues</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get All Sprint issues</from><to>Key,Summary,Assignee</to><enabled>Y</enabled> </hop>
+  <hop> <from>Request to JIRA</from><to>Key,Summary,Assignee</to><enabled>Y</enabled> </hop>
   <hop> <from>Key,Summary,Assignee</from><to>assignee &#x3d; null&#x3f;</to><enabled>Y</enabled> </hop>
   <hop> <from>assignee &#x3d; null&#x3f;</from><to>Select Display Name</to><enabled>Y</enabled> </hop>
   <hop> <from>Select Display Name</from><to>Sanitize 2</to><enabled>Y</enabled> </hop>
@@ -87,6 +83,12 @@
   <hop> <from>Sanitize</from><to>Copy rows to result</to><enabled>Y</enabled> </hop>
   <hop> <from>assignee &#x3d; null&#x3f;</from><to>Set &#x22;Unassigned User&#x22;</to><enabled>Y</enabled> </hop>
   <hop> <from>Set &#x22;Unassigned User&#x22;</from><to>Sanitize</to><enabled>Y</enabled> </hop>
+  <hop> <from>get sprint id</from><to>sprint id &#x3d;&#x3d; null</to><enabled>Y</enabled> </hop>
+  <hop> <from>sprint id &#x3d;&#x3d; null</from><to>Use Backlog</to><enabled>Y</enabled> </hop>
+  <hop> <from>sprint id &#x3d;&#x3d; null</from><to>Use Sprint</to><enabled>Y</enabled> </hop>
+  <hop> <from>Use Sprint</from><to>Substitute URl</to><enabled>Y</enabled> </hop>
+  <hop> <from>Use Backlog</from><to>Substitute URl</to><enabled>Y</enabled> </hop>
+  <hop> <from>Substitute URl</from><to>Request to JIRA</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Copy rows to result</name>
@@ -101,26 +103,26 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1180</xloc>
-      <yloc>228</yloc>
+      <xloc>1255</xloc>
+      <yloc>366</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Get All Sprint issues</name>
+    <name>Request to JIRA</name>
     <type>HTTP</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <url>http&#x3a;&#x2f;&#x2f;jira.pentaho.com&#x2f;rest&#x2f;api&#x2f;latest&#x2f;search&#x3f;jql&#x3d;Sprint&#x25;3D&#x24;&#x7b;sprint_id&#x7d;&#x25;20AND&#x25;20&#x25;22Sprint&#x25;20Team&#x25;22&#x25;3D&#x24;&#x7b;sprint_team&#x7d;</url>
-    <urlInField>N</urlInField>
-    <urlField/>
+    <url/>
+    <urlInField>Y</urlInField>
+    <urlField>url1</urlField>
     <encoding>UTF-8</encoding>
     <httpLogin>&#x24;&#x7b;user&#x7d;</httpLogin>
     <httpPassword>&#x24;&#x7b;password&#x7d;</httpPassword>
@@ -138,45 +140,8 @@
     </result>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>231</xloc>
-      <yloc>327</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Get Unassigned&#x2f;Triage issues</name>
-    <type>HTTP</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <url>http&#x3a;&#x2f;&#x2f;jira.pentaho.com&#x2f;rest&#x2f;api&#x2f;latest&#x2f;search&#x3f;jql&#x3d;Sprint&#x25;3D&#x24;&#x7b;sprint_id&#x7d;&#x25;20AND&#x25;20&#x25;22Sprint&#x25;20Team&#x25;22&#x25;3D&#x24;&#x7b;sprint_team&#x7d;&#x25;20AND&#x25;20assignee&#x25;20in&#x25;20&#x28;Unassigned&#x25;2C&#x25;20Triage&#x29;</url>
-    <urlInField>N</urlInField>
-    <urlField/>
-    <encoding>UTF-8</encoding>
-    <httpLogin>&#x24;&#x7b;user&#x7d;</httpLogin>
-    <httpPassword>&#x24;&#x7b;password&#x7d;</httpPassword>
-    <proxyHost/>
-    <proxyPort/>
-    <socketTimeout>30000</socketTimeout>
-    <connectionTimeout>30000</connectionTimeout>
-    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
-    <lookup>
-    </lookup>
-    <result>
-      <name>result</name>
-      <code/>
-      <response_time/>
-    </result>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>233</xloc>
-      <yloc>125</yloc>
+      <xloc>423</xloc>
+      <yloc>371</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -263,53 +228,15 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>353</xloc>
-      <yloc>224</yloc>
+      <xloc>577</xloc>
+      <yloc>370</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Starter</name>
-    <type>RowGenerator</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>s</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <limit>1</limit>
-    <never_ending>N</never_ending>
-    <interval_in_ms>5000</interval_in_ms>
-    <row_time_field>now</row_time_field>
-    <last_time_field>FiveSecondsAgo</last_time_field>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>93</xloc>
-      <yloc>223</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Text file output</name>
-    <type>TextFileOutput</type>
+    <name>Sanitize</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -318,74 +245,30 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator>&#x3b;</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>D&#x3a;&#x5c;Work&#x5c;Pentaho&#x5c;Infra&#x5c;file</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>key</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>title</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
+    <fields>      <field>        <name>key</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>assignee</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>title</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>434</xloc>
-      <yloc>88</yloc>
+      <xloc>1059</xloc>
+      <yloc>438</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>assignee &#x3d; null&#x3f;</name>
-    <type>FilterRows</type>
+    <name>Sanitize 2</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -394,20 +277,23 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Set &#x22;Unassigned User&#x22;</send_true_to>
-<send_false_to>Select Display Name</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>assignee_raw</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
+    <fields>      <field>        <name>key</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>assignee</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>title</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>546</xloc>
-      <yloc>224</yloc>
+      <xloc>1046</xloc>
+      <yloc>322</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -468,72 +354,8 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>685</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sanitize</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>key</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>assignee</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>title</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>862</xloc>
-      <yloc>299</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sanitize 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>key</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>assignee</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>title</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>860</xloc>
-      <yloc>185</yloc>
+      <xloc>882</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -565,8 +387,207 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>694</xloc>
-      <yloc>302</yloc>
+      <xloc>884</xloc>
+      <yloc>443</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>assignee &#x3d; null&#x3f;</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Set &#x22;Unassigned User&#x22;</send_true_to>
+<send_false_to>Select Display Name</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>assignee_raw</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>717</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>get sprint id</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>sprint</name>
+        <variable>&#x24;&#x7b;sprint_id&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>144</xloc>
+      <yloc>81</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>sprint id &#x3d;&#x3d; null</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Use Backlog</send_true_to>
+<send_false_to>Use Sprint</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>sprint</leftvalue>
+   <function>IS NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>OR</operator>
+   <leftvalue>sprint</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>&#x22;&#x22;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>141</xloc>
+      <yloc>218</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Use Backlog</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>url</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>http&#x3a;&#x2f;&#x2f;jira.pentaho.com&#x2f;rest&#x2f;api&#x2f;latest&#x2f;search&#x3f;maxResults&#x3d;150&#x26;jql&#x3d;Sprint&#x25;20is&#x25;20EMPTY&#x25;20AND&#x25;20&#x25;22Sprint&#x25;20Team&#x25;22&#x25;3D&#x24;&#x7b;sprint_team&#x7d;</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>280</xloc>
+      <yloc>218</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Use Sprint</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>url</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>http&#x3a;&#x2f;&#x2f;jira.pentaho.com&#x2f;rest&#x2f;api&#x2f;latest&#x2f;search&#x3f;maxResults&#x3d;150&#x26;jql&#x3d;Sprint&#x25;3D&#x24;&#x7b;sprint_id&#x7d;&#x25;20AND&#x25;20&#x25;22Sprint&#x25;20Team&#x25;22&#x25;3D&#x24;&#x7b;sprint_team&#x7d;</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>138</xloc>
+      <yloc>370</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Substitute URl</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f; Thanks Rolan&#x21; &#xd;&#xa;&#x2f;&#x2f; http&#x3a;&#x2f;&#x2f;rpbouman.blogspot.com&#x2f;2010&#x2f;12&#x2f;substituting-variables-in-kettle.html&#xd;&#xa;	var text &#x3d; url&#x3b;&#xd;&#xa;    var re &#x3d; &#x2f;&#x5c;&#x24;&#x5c;&#x7b;&#x28;&#x5b;&#x5e;&#x5c;&#x7d;&#x5d;&#x2b;&#x29;&#x5c;&#x7d;&#x7c;&#x25;&#x25;&#x28;&#x5b;&#x5e;&#x25;&#x5d;&#x2b;&#x29;&#x25;&#x25;&#x2f;g,&#xd;&#xa;        match, from &#x3d; 0,&#xd;&#xa;        variable_name, variable_value, &#xd;&#xa;        replaced_text &#x3d; &#x22;&#x22;&#xd;&#xa;    &#x3b;&#xd;&#xa;&#xd;&#xa;    while &#x28;&#x28;match &#x3d; re.exec&#x28;text&#x29;&#x29; &#x21;&#x3d;&#x3d; null&#x29; &#x7b;&#xd;&#xa;        variable_name  &#x3d; match&#x5b;1&#x5d; &#x3f; match&#x5b;1&#x5d; &#x3a; match&#x5b;2&#x5d;&#x3b;&#xd;&#xa;        variable_value &#x3d; getVariable&#x28;variable_name, &#x22;&#x22;&#x29;&#x3b;&#xd;&#xa;        replaced_text &#x2b;&#x3d; text.substring&#x28;from, match.index&#x29;&#x3b;&#xd;&#xa;        replaced_text &#x2b;&#x3d; variable_value&#x3b;&#xd;&#xa;        from &#x3d; match.index &#x2b; match&#x5b;0&#x5d;.length&#x3b;&#xd;&#xa;    &#x7d;&#xd;&#xa;    replaced_text &#x2b;&#x3d; text.substring&#x28;from, text.length&#x29;&#x3b;&#xd;&#xa;    var url1 &#x3d; replaced_text&#x3b;&#xd;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>url1</name>
+        <rename>url1</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>290</xloc>
+      <yloc>375</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
